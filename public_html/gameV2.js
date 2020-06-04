@@ -160,7 +160,7 @@ class Game{
 	
 	loadEnvironment(loader){
 		const game = this;
-		loader.load(`${this.assetsPath}fbx/warehouse.fbx`, function(object){
+		loader.load(`https://virtual-event-space.s3-eu-west-1.amazonaws.com/warehouse.fbx`, function(object){
 			game.environment = object;
 			game.colliders = [];
 			game.scene.add(object);
@@ -194,7 +194,7 @@ class Game{
 	loadNextAnim(loader){
 		let anim = this.anims.pop();
 		const game = this;
-		loader.load( `${this.assetsPath}fbx/anims/${anim}.fbx`, function( object ){
+		loader.load( `https://virtual-event-space.s3-eu-west-1.amazonaws.com/${anim}.fbx`, function( object ){
 			game.player.animations[anim] = object.animations[0];
 			if (game.anims.length>0){
 				game.loadNextAnim(loader);

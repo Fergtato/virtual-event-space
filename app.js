@@ -3,11 +3,11 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
-app.use(express.static('../public_html/'));
-app.use(express.static('../public_html/libs'));
+app.use(express.static('public_html/'));
+app.use(express.static('public_html/libs'));
 // app.use(express.static('../../public_html/blockland/v3'));
 app.get('/',function(req, res) {
-    res.sendFile(__dirname + '../public_html/index.html');
+    res.sendFile(__dirname + 'public_html/index.html');
 });
 
 io.sockets.on('connection', function(socket){
