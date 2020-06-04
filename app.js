@@ -1,3 +1,4 @@
+const PORT = process.env.PORT || 2002;
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);
@@ -47,7 +48,7 @@ io.sockets.on('connection', function(socket){
 	})
 });
 
-http.listen(2002, function(){
+http.listen(PORT, function(){
   console.log('listening on *:2002');
 });
 
