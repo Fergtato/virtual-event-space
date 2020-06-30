@@ -50,7 +50,7 @@ class Game{
 		const sfxExt = SFX.supportsAudioType('mp3') ? 'mp3' : 'ogg';
         
 		const game = this;
-		this.anims = ['maleWalking', 'maleWalking Backwards', 'maleTurn', 'maleRunning', 'malePointing', 'maleTalking', 'malePointing Gesture', 'mocapWalking', 'mocapWalking Backwards', 'mocapTurn', 'mocapRunning', 'mocapPointing', 'mocapTalking', 'mocapPointing Gesture'];
+		this.anims = ['lowpolyWalking', 'lowpolyWalking Backwards', 'lowpolyTurn', 'lowpolyRunning', 'lowpolyPointing', 'lowpolyTalking', 'lowpolyPointing Gesture'];
 		
 		const options = {
 			assets:[
@@ -579,7 +579,7 @@ class Player{
 		colour = colours[Math.floor(Math.random()*colours.length)];
 									
 		if (options===undefined){
-			const people = ['male', 'mocap'];
+			const people = ['lowpoly'];
 			model = people[Math.floor(Math.random()*people.length)];
 		}else if (typeof options =='object'){
 			this.local = false;
@@ -634,14 +634,14 @@ class Player{
 			if (model == "male") {
 				game.animations.maleIdle = object.animations[0];
 			} else {
-				game.animations.mocapIdle = object.animations[0];
+				game.animations.lowpolyIdle = object.animations[0];
 			}
 			
 			if (player.local){
 				game.createCameras();
 				game.sun.target = game.player.object;
 
-				// game.animations.mocapIdle = object.animations[0];
+				// game.animations.lowpolyIdle = object.animations[0];
 				// console.log(model);
 				
 				
@@ -660,11 +660,11 @@ class Player{
 				game.remotePlayers.push(players[0]);
 			}
 			
-			// if (game.animations.mocapIdle!==undefined) player.action = "Idle";
+			// if (game.animations.lowpolyIdle!==undefined) player.action = "Idle";
 			if (model == "male") {
 				if (game.animations.maleIdle!==undefined) player.action = "Idle";
 			} else {
-				if (game.animations.mocapIdle!==undefined) player.action = "Idle";
+				if (game.animations.lowpolyIdle!==undefined) player.action = "Idle";
 			}
 			
 		} );
