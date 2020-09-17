@@ -115,8 +115,8 @@ class Game{
 
 
 
-		// const ambient = new THREE.AmbientLight( 0xaaaaaa );
-  //       this.scene.add( ambient );
+		const ambient = new THREE.AmbientLight( 0xaaaaaa , 0.3);
+        this.scene.add( ambient );
 
         const light = new THREE.DirectionalLight( 0xaaaaaa );
         light.position.set( 30, 100, 40 );
@@ -141,6 +141,7 @@ class Game{
 		spotLight.position.set( -1687, 1201, 120 );
 		spotLight.angle = 0.7;
 		spotLight.penumbra = 0.5;
+		spotLight.distance = 1000;
 		spotLight.castShadow = true;
 		spotLight.shadow.mapSize.width = 1024;
 		spotLight.shadow.mapSize.height = 1024;
@@ -155,6 +156,7 @@ class Game{
 		spotLight.position.set( -1687, 1201, -328 );
 		spotLight.angle = 0.7;
 		spotLight.penumbra = 0.5;
+		spotLight.distance = 1000;
 		spotLight.castShadow = true;
 		spotLight.shadow.mapSize.width = 1024;
 		spotLight.shadow.mapSize.height = 1024;
@@ -169,6 +171,7 @@ class Game{
 		spotLight.position.set( -1687, 1201, -844 );
 		spotLight.angle = 0.7;
 		spotLight.penumbra = 0.5;
+		spotLight.distance = 1000;
 		spotLight.castShadow = true;
 		spotLight.shadow.mapSize.width = 1024;
 		spotLight.shadow.mapSize.height = 1024;
@@ -183,6 +186,7 @@ class Game{
 		spotLight.position.set( -1687, 1201, -1345 );
 		spotLight.angle = 0.7;
 		spotLight.penumbra = 0.5;
+		spotLight.distance = 1000;
 		spotLight.castShadow = true;
 		spotLight.shadow.mapSize.width = 1024;
 		spotLight.shadow.mapSize.height = 1024;
@@ -197,6 +201,7 @@ class Game{
 		spotLight.position.set( -1687, 1201, -1809 );
 		spotLight.angle = 0.7;
 		spotLight.penumbra = 0.5;
+		spotLight.distance = 1000;
 		spotLight.castShadow = true;
 		spotLight.shadow.mapSize.width = 1024;
 		spotLight.shadow.mapSize.height = 1024;
