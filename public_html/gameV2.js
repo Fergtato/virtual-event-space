@@ -115,8 +115,8 @@ class Game{
 
 
 
-		const ambient = new THREE.AmbientLight( 0xaaaaaa );
-        this.scene.add( ambient );
+		// const ambient = new THREE.AmbientLight( 0xaaaaaa );
+  //       this.scene.add( ambient );
 
         const light = new THREE.DirectionalLight( 0xaaaaaa );
         light.position.set( 30, 100, 40 );
@@ -137,6 +137,76 @@ class Game{
 		this.sun = light;
 		this.scene.add(light);
 
+		var spotLight = new THREE.SpotLight( 0xffffff , 5);
+		spotLight.position.set( -1687, 1201, 120 );
+		spotLight.angle = 0.7;
+		spotLight.penumbra = 0.5;
+		spotLight.castShadow = true;
+		spotLight.shadow.mapSize.width = 1024;
+		spotLight.shadow.mapSize.height = 1024;
+		spotLight.shadow.camera.near = 500;
+		spotLight.shadow.camera.far = 4000;
+		spotLight.shadow.camera.fov = 30;
+		this.scene.add( spotLight );
+		spotLight.target.position.set(-1765,0,120);
+		this.scene.add( spotLight.target );
+
+		var spotLight = new THREE.SpotLight( 0xffffff , 5);
+		spotLight.position.set( -1687, 1201, -328 );
+		spotLight.angle = 0.7;
+		spotLight.penumbra = 0.5;
+		spotLight.castShadow = true;
+		spotLight.shadow.mapSize.width = 1024;
+		spotLight.shadow.mapSize.height = 1024;
+		spotLight.shadow.camera.near = 500;
+		spotLight.shadow.camera.far = 4000;
+		spotLight.shadow.camera.fov = 30;
+		this.scene.add( spotLight );
+		spotLight.target.position.set(-1765,0,-328);
+		this.scene.add( spotLight.target );
+
+		var spotLight = new THREE.SpotLight( 0xffffff , 5);
+		spotLight.position.set( -1687, 1201, -844 );
+		spotLight.angle = 0.7;
+		spotLight.penumbra = 0.5;
+		spotLight.castShadow = true;
+		spotLight.shadow.mapSize.width = 1024;
+		spotLight.shadow.mapSize.height = 1024;
+		spotLight.shadow.camera.near = 500;
+		spotLight.shadow.camera.far = 4000;
+		spotLight.shadow.camera.fov = 30;
+		this.scene.add( spotLight );
+		spotLight.target.position.set(-1765,0,-844);
+		this.scene.add( spotLight.target );
+
+		var spotLight = new THREE.SpotLight( 0xffffff , 5);
+		spotLight.position.set( -1687, 1201, -1345 );
+		spotLight.angle = 0.7;
+		spotLight.penumbra = 0.5;
+		spotLight.castShadow = true;
+		spotLight.shadow.mapSize.width = 1024;
+		spotLight.shadow.mapSize.height = 1024;
+		spotLight.shadow.camera.near = 500;
+		spotLight.shadow.camera.far = 4000;
+		spotLight.shadow.camera.fov = 30;
+		this.scene.add( spotLight );
+		spotLight.target.position.set(-1765,0,-1345);
+		this.scene.add( spotLight.target );
+
+		var spotLight = new THREE.SpotLight( 0xffffff , 5);
+		spotLight.position.set( -1687, 1201, -1809 );
+		spotLight.angle = 0.7;
+		spotLight.penumbra = 0.5;
+		spotLight.castShadow = true;
+		spotLight.shadow.mapSize.width = 1024;
+		spotLight.shadow.mapSize.height = 1024;
+		spotLight.shadow.camera.near = 500;
+		spotLight.shadow.camera.far = 4000;
+		spotLight.shadow.camera.fov = 30;
+		this.scene.add( spotLight );
+		spotLight.target.position.set(-1765,0,-1809);
+		this.scene.add( spotLight.target );
+
 		// model
 		const loader = new THREE.FBXLoader();
 		const game = this;
@@ -146,7 +216,7 @@ class Game{
 		this.loadEnvironment(loader);
 		
 		this.speechBubble = new SpeechBubble(this, "", 150);
-		this.speechBubble.mesh.position.set(0, 350, 0);
+		this.speechBubble.mesh.position.set(0, -350, 0);
 
 		
 
@@ -154,12 +224,14 @@ class Game{
 		// CSS 3D
 
 		let planeMaterial   = new THREE.MeshBasicMaterial({color: 0x000000, opacity: 0.1, side: THREE.DoubleSide });
-		let planeWidth = 960;
-	    let planeHeight = 540;
+		let planeWidth = 1965;
+	    let planeHeight = 800;
 		let planeGeometry = new THREE.PlaneGeometry( planeWidth, planeHeight );
 		let planeMesh= new THREE.Mesh( planeGeometry, planeMaterial );
 		planeMesh.position.y += planeHeight;
-		planeMesh.position.x = -2000;
+		planeMesh.position.x = -2375;
+		planeMesh.position.y = 1680;
+		planeMesh.position.z = -872;
 		planeMesh.rotation.y = Math.PI / 2;
 		// add it to the standard (WebGL) scene
 		this.scene.add(planeMesh);
@@ -169,21 +241,22 @@ class Game{
 		// create the iframe to contain webpage
 		let element	= document.createElement('iframe')
 		// webpage to be loaded into iframe
-		element.src	= "https://www.youtube.com/embed/5qap5aO4i9A?autoplay=1";
+		element.src	= "https://www.youtube.com/embed/JH_BAwSFKwM?controls=0&amp;start=108&autoplay=1";
 		element.allow = "autoplay; encrypted-media";
 		// width of iframe in pixels
 		let elementWidth = 1024;
 		// force iframe to have same relative dimensions as planeGeometry
 		let aspectRatio = planeHeight / planeWidth;
 		let elementHeight = elementWidth * aspectRatio;
-		element.style.width  = elementWidth + "px";
-		element.style.height = elementHeight + "px";
+		element.style.width  = elementWidth+50 + "px";
+		element.style.height = elementHeight+30 + "px";
 
 		// create a CSS3DObject to display element
 		let cssObject = new THREE.CSS3DObject( element );
 		// synchronize cssObject position/rotation with planeMesh position/rotation 
 		cssObject.position.x = planeMesh.position.x;
 		cssObject.position.y = planeMesh.position.y;
+		cssObject.position.z = planeMesh.position.z;
 		cssObject.rotation.y = planeMesh.rotation.y;
 		// resize cssObject to same size as planeMesh (plus a border)
 		let percentBorder = 0.05;
@@ -309,7 +382,7 @@ class Game{
 		front.position.set(112, 100, 600);
 		front.parent = this.player.object;
 		const back = new THREE.Object3D();
-		back.position.set(0, 150, -500);
+		back.position.set(0, 50, -500);
 		back.parent = this.player.object;
 		const chat = new THREE.Object3D();
 		chat.position.set(0, 200, -450);
