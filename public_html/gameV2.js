@@ -223,6 +223,19 @@ class Game{
 		this.speechBubble = new SpeechBubble(this, "", 150);
 		this.speechBubble.mesh.position.set(0, -350, 0);
 
+
+
+		// Image Tex
+		let screenGeometry = new THREE.PlaneGeometry( 1965, 800, 32 );
+		let screenTexture = new THREE.TextureLoader().load( "https://virtual-event-space.s3-eu-west-1.amazonaws.com/projection.jpg" );
+		let screenMaterial = new THREE.MeshBasicMaterial( {map: screenTexture, side: THREE.DoubleSide} );
+		let screen = new THREE.Mesh( screenGeometry, screenMaterial );
+		screen.position.x = -2370;
+		screen.position.y = 1680;
+		screen.position.z = -872;
+		screen.rotation.y = Math.PI / 2;
+		this.scene.add( screen );
+
 		
 
 
@@ -246,7 +259,7 @@ class Game{
 		// create the iframe to contain webpage
 		let element	= document.createElement('iframe')
 		// webpage to be loaded into iframe
-		element.src	= "https://www.youtube.com/embed/JH_BAwSFKwM?controls=0&amp;start=108&autoplay=1";
+		element.src	= "https://www.youtube.com/embed/mlHklH5VBtI?start=108&autoplay=1";
 		element.allow = "autoplay; encrypted-media";
 		// width of iframe in pixels
 		let elementWidth = 1024;
